@@ -12,4 +12,13 @@ public class CategoryMapper {
 
         return dto;
     }
+
+    public static Category toEntity(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        category.setId(categoryDTO.getId());
+        category.setName(categoryDTO.getName());
+        category.setDescription(categoryDTO.getDescription());
+        return category;
+    }
+
 }

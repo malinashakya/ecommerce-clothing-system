@@ -12,5 +12,6 @@ public class ProductDTO {
     private double price;
     private String brand;
     private String image;
+    private Long categoryId;
     private String categoryName;
 }

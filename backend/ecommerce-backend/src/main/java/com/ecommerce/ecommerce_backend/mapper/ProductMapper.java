@@ -4,18 +4,35 @@ import com.ecommerce.ecommerce_backend.dto.ProductDTO;
 import com.ecommerce.ecommerce_backend.entity.Product;
 
 public class ProductMapper {
-    private ProductDTO toDTO(Product product) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(product.getId());
-        productDTO.setName(product.getName());
-        productDTO.setDescription(productDTO.getDescription());
-        productDTO.setPrice(productDTO.getPrice());
-        productDTO.setBrand(product.getBrand());
-        productDTO.setImage(product.getImage());
+
+    public static ProductDTO toDTO(Product product) {
+        ProductDTO dto = new ProductDTO();
+
+        dto.setId(product.getId());
+        dto.setName(product.getName());
+        dto.setDescription(product.getDescription());
+        dto.setPrice(product.getPrice());
+        dto.setBrand(product.getBrand());
+        dto.setImage(product.getImage());
 
         if (product.getCategory() != null) {
-            productDTO.setCategoryName(productDTO.getCategoryName());
+            dto.setCategoryId(product.getCategory().getId());
+            dto.setCategoryName(product.getCategory().getName());
         }
-        return productDTO;
+
+        return dto;
+    }
+
+    public static Product toEntity(ProductDTO dto) {
+        Product product = new Product();
+
+        product.setId(dto.getId());
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setBrand(dto.getBrand());
+        product.setImage(dto.getImage());
+
+        return product;
     }
 }
